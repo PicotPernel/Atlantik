@@ -102,11 +102,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bateau.cs" />
     <Compile Include="FormAjouterBateau.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormAjouterBateau.Designer.cs">
       <DependentUpon>FormAjouterBateau.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormModiferBateau.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormModiferBateau.Designer.cs">
+      <DependentUpon>FormModiferBateau.cs</DependentUpon>
     </Compile>
     <Compile Include="FormAjouterLiaison.cs">
       <SubType>Form</SubType>
@@ -146,6 +153,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormAjouterBateau.resx">
       <DependentUpon>FormAjouterBateau.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormModiferBateau.resx">
+      <DependentUpon>FormModiferBateau.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAjouterLiaison.resx">
       <DependentUpon>FormAjouterLiaison.cs</DependentUpon>

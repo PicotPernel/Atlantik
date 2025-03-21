@@ -128,6 +128,7 @@
             this.miBateauModifier.Name = "miBateauModifier";
             this.miBateauModifier.Size = new System.Drawing.Size(191, 22);
             this.miBateauModifier.Text = "Un bateau";
+            this.miBateauModifier.Click += new System.EventHandler(this.miBateauModifier_Click);
             // 
             // miParametresModifier
             // 

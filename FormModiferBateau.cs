@@ -11,15 +11,11 @@ using MySql.Data.MySqlClient;
 
 namespace Atlantik
 {
-    public partial class FormAjouterBateau: Form
+    public partial class FormModiferBateau: Form
     {
-        public FormAjouterBateau()
+        public FormModiferBateau()
         {
             InitializeComponent();
-        }
-        private void FormAjouterBateau_Load(object sender, EventArgs e)
-        {
-            int hauteur = 0;
             MySqlConnection maCnx;
             MySqlDataReader jeuEnr = null;
             maCnx = new MySqlConnection("server=localhost;user=root;database=atlantik;port=3306;password=");
@@ -27,21 +23,12 @@ namespace Atlantik
             {
                 string requête;
                 maCnx.Open();
-                requête = "SELECT * FROM categorie";
+                requête = "Select * from Bateau";
                 var maCde = new MySqlCommand(requête, maCnx);
                 jeuEnr = maCde.ExecuteReader();
                 while (jeuEnr.Read())
                 {
-                    hauteur += 1;
-                    Label lblCapacite = new Label();
-                    lblCapacite.Size = new Size(150, 20);
-                    lblCapacite.Location = new Point(10, hauteur * 25); 
-                    lblCapacite.Text = jeuEnr["LETTRECATEGORIE"].ToString() + " (" + jeuEnr["LIBELLE"].ToString() + ")" + " :";
-                    TextBox tbxCapacite= new TextBox();
-                    tbxCapacite.Location = new Point(180, hauteur * 25);
-                    tbxCapacite.Tag = jeuEnr["LETTRECATEGORIE"];
-                    gbxCapaciteMax.Controls.Add(lblCapacite);
-                    gbxCapaciteMax.Controls.Add(tbxCapacite);
+                    cmbNomBateau.Items.Add(new Bateau(int.Parse(jeuEnr["NOBATEAU"].ToString()), jeuEnr["NOM"].ToString()));
                 }
             }
             catch (MySqlException exception)
@@ -60,19 +47,38 @@ namespace Atlantik
                 }
             }
         }
-        private void btnAjouter_Click(object sender, EventArgs e)
+        private void FormAjouterBateau_Load(object sender, EventArgs e)
         {
-            int dernierNoBateau = 0;
+        }
+        private void cmbNomBateau_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int hauteur = 0;
             MySqlConnection maCnx;
+            MySqlDataReader jeuEnr = null;
             maCnx = new MySqlConnection("server=localhost;user=root;database=atlantik;port=3306;password=");
             try
             {
                 string requête;
                 maCnx.Open();
-                requête = "INSERT INTO bateau (NOM) VALUES (@nomBateau)";
+                requête = "Select NOBATEAU, categorie.LETTRECATEGORIE, LIBELLE, CAPACITEMAX from categorie inner join contenir on (contenir.LETTRECATEGORIE = categorie.LETTRECATEGORIE) where NOBATEAU = @noBateau";
                 var maCde = new MySqlCommand(requête, maCnx);
-                maCde.Parameters.AddWithValue("@nomBateau", tbxNomBateau.Text);
-                MessageBox.Show("Lignes affectées : " + maCde.ExecuteNonQuery());
+                maCde.Parameters.AddWithValue("@noBateau", ((Bateau)cmbNomBateau.SelectedItem).GetNoBateau());
+                jeuEnr = maCde.ExecuteReader();
+                while (jeuEnr.Read())
+                {
+                    hauteur += 1;
+                    Label lblCapacite = new Label();
+                    lblCapacite.Size = new Size(150, 20);
+                    lblCapacite.Location = new Point(10, hauteur * 25);
+                    lblCapacite.Text = jeuEnr["LETTRECATEGORIE"].ToString() + " (" + jeuEnr["LIBELLE"].ToString() + ")" + " :";
+                    TextBox tbxCapacite = tbxCapacite = new TextBox();
+                    tbxCapacite.Location = new Point(180, hauteur * 25);
+                    tbxCapacite.Tag = jeuEnr["LETTRECATEGORIE"].ToString();
+                    tbxCapacite.Text = jeuEnr["CAPACITEMAX"].ToString();
+                    gbxCapaciteMax.Controls.Add(lblCapacite);
+                    gbxCapaciteMax.Controls.Add(tbxCapacite);
+                }
+
             }
             catch (MySqlException exception)
             {
@@ -80,30 +86,20 @@ namespace Atlantik
             }
             finally
             {
+                if (jeuEnr is object & !jeuEnr.IsClosed)
+                {
+                    jeuEnr.Close();
+                }
                 if (maCnx is object & maCnx.State == ConnectionState.Open)
                 {
                     maCnx.Close();
                 }
             }
-            try
-            {
-                string requête;
-                maCnx.Open();
-                requête = "SELECT * FROM bateau ORDER BY NOBATEAU DESC LIMIT 1";
-                var maCde = new MySqlCommand(requête, maCnx);
-                dernierNoBateau = int.Parse(maCde.ExecuteScalar().ToString());
-            }
-            catch (MySqlException exception)
-            {
-                MessageBox.Show("Erreur " + exception.ToString());
-            }
-            finally
-            {
-                if (maCnx is object & maCnx.State == ConnectionState.Open)
-                {
-                    maCnx.Close();
-                }
-            }
+        }
+        private void btnModifier_Click(object sender, EventArgs e)
+        {
+            MySqlConnection maCnx;
+            maCnx = new MySqlConnection("server=localhost;user=root;database=atlantik;port=3306;password=");
             foreach (Control element in gbxCapaciteMax.Controls)
             {
                 if (element is TextBox)
@@ -112,11 +108,11 @@ namespace Atlantik
                     {
                         string requête;
                         maCnx.Open();
-                        requête = "INSERT INTO contenir (LETTRECATEGORIE, NOBATEAU, CAPACITEMAX) VALUES (@lettreCategorie, @noBateau, @capaciteMax)";
+                        requête = "UPDATE contenir SET CAPACITEMAX = @capacite WHERE contenir.LETTRECATEGORIE = @lettreCategorie AND contenir.NOBATEAU = @noBateau";
                         var maCde = new MySqlCommand(requête, maCnx);
-                        maCde.Parameters.AddWithValue("@lettreCategorie", element.Tag);
-                        maCde.Parameters.AddWithValue("@noBateau", dernierNoBateau);
-                        maCde.Parameters.AddWithValue("@capaciteMax", element.Text);
+                        maCde.Parameters.AddWithValue("@capacite", int.Parse(((TextBox)element).Text));
+                        maCde.Parameters.AddWithValue("@lettreCategorie", ((TextBox)element).Tag);
+                        maCde.Parameters.AddWithValue("@noBateau", ((Bateau)cmbNomBateau.SelectedItem).GetNoBateau());
                         MessageBox.Show("Modification effectuée");
                     }
                     catch (MySqlException exception)
@@ -132,22 +128,10 @@ namespace Atlantik
                     }
                 }
             }
-            tbxNomBateau.Text = null;
-            foreach (Control element in gbxCapaciteMax.Controls)
-            {
-                if ((element is TextBox))
-                {
-                    element.Text = null;
-                }
-            }
-        }
-        private void tbxNomBateau_TextChanged(object sender, EventArgs e)
-        {
-
         }
         private void gbxCapaciteMax_Enter(object sender, EventArgs e)
         {
 
         }
-    }
+    }   
 }

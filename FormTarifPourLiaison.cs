@@ -29,7 +29,7 @@ namespace Atlantik
             {
                 string requête;
                 maCnx.Open();
-                requête = "Select * from type";
+                requête = "SELECT * FROM type";
                 var maCde = new MySqlCommand(requête, maCnx);
                 jeuEnr = maCde.ExecuteReader();
                 while (jeuEnr.Read())
@@ -65,7 +65,7 @@ namespace Atlantik
             {
                 string requête;
                 maCnx.Open();
-                requête = "Select * from secteur";
+                requête = "SELECT * FROM secteur";
                 var maCde = new MySqlCommand(requête, maCnx);
                 jeuEnr = maCde.ExecuteReader();
                 while (jeuEnr.Read())
@@ -92,7 +92,7 @@ namespace Atlantik
             {
                 string requête;
                 maCnx.Open();
-                requête = "Select * from periode";
+                requête = "SELECT * FROM periode";
                 var maCde = new MySqlCommand(requête, maCnx);
                 jeuEnr = maCde.ExecuteReader();
                 while (jeuEnr.Read())
@@ -126,7 +126,7 @@ namespace Atlantik
             {
                 string requête;
                 maCnx.Open();
-                requête = "select noLiaison, PortDepart.nom as 'Port départ', PortArrive.nom as 'Port arrivée' from liaison inner join port as PortDepart on (PortDepart.noport = noport_depart) inner join port as PortArrive on (PortArrive.noport = noport_arrivee) where NOSECTEUR = @noSecteur;";
+                requête = "SELECT noLiaison, PortDepart.nom as 'Port départ', PortArrive.nom as 'Port arrivée' from LIAISON INNER JOIN port as PortDepart on (PortDepart.noport = noport_depart) INNER JOIN port as PortArrive ON (PortArrive.noport = noport_arrivee) WHERE NOSECTEUR = @noSecteur";
                 var maCde = new MySqlCommand(requête, maCnx);
                 maCde.Parameters.AddWithValue("@noSecteur", ((Secteur)lbxSecteurs.SelectedItem).GetNoSecteur());
                 jeuEnr = maCde.ExecuteReader();
@@ -137,7 +137,7 @@ namespace Atlantik
                 else
                 while (jeuEnr.Read())
                 {
-                        cmbLiaisons.Items.Add(new Liaison(jeuEnr.GetValue(1).ToString(), jeuEnr.GetValue(2).ToString(), int.Parse(jeuEnr.GetValue(0).ToString())));
+                    cmbLiaisons.Items.Add(new Liaison(jeuEnr.GetValue(1).ToString(), jeuEnr.GetValue(2).ToString(), int.Parse(jeuEnr.GetValue(0).ToString())));
                 }
             }
             catch (MySqlException exception)
@@ -169,7 +169,7 @@ namespace Atlantik
                     {
                         string requête;
                         maCnx.Open();
-                        requête = "Insert into tarifer values (@noPeriode, @lettreCategorie, @noType, @noLiaison, @tarif);";
+                        requête = "INSERT INTO tarifer VALUES (@noPeriode, @lettreCategorie, @noType, @noLiaison, @tarif)";
                         var maCde = new MySqlCommand(requête, maCnx);
                         maCde.Parameters.AddWithValue("@noPeriode", ((Periode)cmbPeriodes.SelectedItem).GetNoPeriode());
                         maCde.Parameters.AddWithValue("@lettreCategorie", tags[0]);

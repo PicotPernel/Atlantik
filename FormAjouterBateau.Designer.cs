@@ -28,68 +28,70 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.gbxCapaciteMax = new System.Windows.Forms.GroupBox();
-            this.lblNomDuBateau = new System.Windows.Forms.Label();
-            this.tbxNomBateau = new System.Windows.Forms.TextBox();
             this.btnAjouter = new System.Windows.Forms.Button();
+            this.lblNomDuBateau = new System.Windows.Forms.Label();
+            this.gbxCapaciteMax = new System.Windows.Forms.GroupBox();
+            this.tbxNomBateau = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // gbxCapaciteMax
+            // btnAjouter
             // 
-            this.gbxCapaciteMax.Location = new System.Drawing.Point(29, 85);
-            this.gbxCapaciteMax.Name = "gbxCapaciteMax";
-            this.gbxCapaciteMax.Size = new System.Drawing.Size(295, 542);
-            this.gbxCapaciteMax.TabIndex = 0;
-            this.gbxCapaciteMax.TabStop = false;
-            this.gbxCapaciteMax.Text = "Capacités maximales";
-            this.gbxCapaciteMax.Enter += new System.EventHandler(this.gbxCapaciteMax_Enter);
+            this.btnAjouter.Location = new System.Drawing.Point(30, 633);
+            this.btnAjouter.Name = "btnAjouter";
+            this.btnAjouter.Size = new System.Drawing.Size(295, 23);
+            this.btnAjouter.TabIndex = 7;
+            this.btnAjouter.Text = "Ajouter";
+            this.btnAjouter.UseVisualStyleBackColor = true;
+            this.btnAjouter.Click += new System.EventHandler(this.btnAjouter_Click);
             // 
             // lblNomDuBateau
             // 
             this.lblNomDuBateau.AutoSize = true;
-            this.lblNomDuBateau.Location = new System.Drawing.Point(26, 12);
+            this.lblNomDuBateau.Location = new System.Drawing.Point(27, 22);
             this.lblNomDuBateau.Name = "lblNomDuBateau";
             this.lblNomDuBateau.Size = new System.Drawing.Size(86, 13);
-            this.lblNomDuBateau.TabIndex = 1;
+            this.lblNomDuBateau.TabIndex = 6;
             this.lblNomDuBateau.Text = "Nom du bateau :";
+            // 
+            // gbxCapaciteMax
+            // 
+            this.gbxCapaciteMax.Location = new System.Drawing.Point(30, 85);
+            this.gbxCapaciteMax.Name = "gbxCapaciteMax";
+            this.gbxCapaciteMax.Size = new System.Drawing.Size(295, 542);
+            this.gbxCapaciteMax.TabIndex = 5;
+            this.gbxCapaciteMax.TabStop = false;
+            this.gbxCapaciteMax.Text = "Capacités maximales";
+            this.gbxCapaciteMax.Enter += new System.EventHandler(this.gbxCapaciteMax_Enter);
             // 
             // tbxNomBateau
             // 
-            this.tbxNomBateau.Location = new System.Drawing.Point(29, 37);
+            this.tbxNomBateau.Location = new System.Drawing.Point(30, 38);
             this.tbxNomBateau.Name = "tbxNomBateau";
             this.tbxNomBateau.Size = new System.Drawing.Size(295, 20);
-            this.tbxNomBateau.TabIndex = 2;
-            // 
-            // btnAjouter
-            // 
-            this.btnAjouter.Location = new System.Drawing.Point(29, 633);
-            this.btnAjouter.Name = "btnAjouter";
-            this.btnAjouter.Size = new System.Drawing.Size(295, 23);
-            this.btnAjouter.TabIndex = 3;
-            this.btnAjouter.Text = "Ajouter";
-            this.btnAjouter.UseVisualStyleBackColor = true;
+            this.tbxNomBateau.TabIndex = 9;
+            this.tbxNomBateau.TextChanged += new System.EventHandler(this.tbxNomBateau_TextChanged);
             // 
             // FormAjouterBateau
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(358, 668);
-            this.Controls.Add(this.btnAjouter);
             this.Controls.Add(this.tbxNomBateau);
+            this.Controls.Add(this.btnAjouter);
             this.Controls.Add(this.lblNomDuBateau);
             this.Controls.Add(this.gbxCapaciteMax);
             this.Name = "FormAjouterBateau";
-            this.Text = "FormAjouterBateau";
+            this.Text = "Atlantik - Ajouter un bateau";
+            this.Load += new System.EventHandler(this.FormAjouterBateau_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox gbxCapaciteMax;
-        private System.Windows.Forms.Label lblNomDuBateau;
-        private System.Windows.Forms.TextBox tbxNomBateau;
         private System.Windows.Forms.Button btnAjouter;
+        private System.Windows.Forms.Label lblNomDuBateau;
+        private System.Windows.Forms.GroupBox gbxCapaciteMax;
+        private System.Windows.Forms.TextBox tbxNomBateau;
     }
 }
