@@ -130,11 +130,6 @@ namespace Atlantik
                 var maCde = new MySqlCommand(requête, maCnx);
                 maCde.Parameters.AddWithValue("@noSecteur", ((Secteur)lbxSecteurs.SelectedItem).GetNoSecteur());
                 jeuEnr = maCde.ExecuteReader();
-                if (jeuEnr == null)
-                {
-                    cmbLiaisons.Items.Add("Aucune liaison pour ce secteur");
-                }
-                else
                 while (jeuEnr.Read())
                 {
                     cmbLiaisons.Items.Add(new Liaison(jeuEnr.GetValue(1).ToString(), jeuEnr.GetValue(2).ToString(), int.Parse(jeuEnr.GetValue(0).ToString())));

@@ -113,6 +113,7 @@
             this.miUneTraverseeAjouter.Name = "miUneTraverseeAjouter";
             this.miUneTraverseeAjouter.Size = new System.Drawing.Size(287, 22);
             this.miUneTraverseeAjouter.Text = "Une traversée";
+            this.miUneTraverseeAjouter.Click += new System.EventHandler(this.miUneTraverseeAjouter_Click);
             // 
             // mmModifier
             // 

@@ -44,6 +44,16 @@ namespace Atlantik
             FormAjouterBateau formAjouterBateau = new FormAjouterBateau();
             formAjouterBateau.Show();
         }
+        private void miUneTraverseeAjouter_Click(object sender, EventArgs e)
+        {
+            FormAjouterTraversee formAjouterTraversee = new FormAjouterTraversee();
+            formAjouterTraversee.Show();
+        }
+        private void miBateauModifier_Click(object sender, EventArgs e)
+        {
+            FormModiferBateau formModiferBateau = new FormModiferBateau();
+            formModiferBateau.Show();
+        }
         private void ajouterToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -56,12 +66,6 @@ namespace Atlantik
         private void Form1_Load(object sender, EventArgs e)
         {
 
-        }
-
-        private void miBateauModifier_Click(object sender, EventArgs e)
-        {
-            FormModiferBateau formModiferBateau = new FormModiferBateau();
-            formModiferBateau.Show();
         }
     }
 }

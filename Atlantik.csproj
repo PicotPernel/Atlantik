@@ -102,6 +102,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AjouterTraversee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AjouterTraversee.Designer.cs">
+      <DependentUpon>AjouterTraversee.cs</DependentUpon>
+    </Compile>
     <Compile Include="Bateau.cs" />
     <Compile Include="FormAjouterBateau.cs">
       <SubType>Form</SubType>
@@ -151,6 +157,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AjouterTraversee.resx">
+      <DependentUpon>AjouterTraversee.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormAjouterBateau.resx">
       <DependentUpon>FormAjouterBateau.cs</DependentUpon>
     </EmbeddedResource>
