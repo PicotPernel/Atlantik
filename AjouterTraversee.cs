@@ -111,12 +111,39 @@ namespace Atlantik
                 }
             }
         }
-        private void lblNomBateau_Click(object sender, EventArgs e)
+        private void btnAjouter_Click(object sender, EventArgs e)
+        {
+            MySqlConnection maCnx;
+            maCnx = new MySqlConnection("server=localhost;user=root;database=atlantik;port=3306;password=");
+            try
+            {
+                string requête;
+                maCnx.Open();
+                requête = "INSERT INTO traversee (NOLIAISON, NOBATEAU, DATEHEUREDEPART, DATEHEUREARRIVEE, CLOTUREEMBARQUEMENT) VALUES (@noLiaison, @noBateau, @dateHeureDepart, @dateHeureArrivee, 0)";
+                var maCde = new MySqlCommand(requête, maCnx);
+                maCde.Parameters.AddWithValue("@noLiaison", ((Liaison)cmbLiaison.SelectedItem).GetNoLiaison());
+                maCde.Parameters.AddWithValue("@noBateau", ((Bateau)cmbBateaux.SelectedItem).GetNoBateau());
+                maCde.Parameters.AddWithValue("@dateHeureDepart", dateDepart.Value);
+                maCde.Parameters.AddWithValue("@dateHeureArrivee", dateArrivee.Value);
+                MessageBox.Show("Lignes affectées : " + maCde.ExecuteNonQuery().ToString());
+            }
+            catch (MySqlException exception)
+            {
+                MessageBox.Show("Erreur " + exception.ToString());
+            }
+            finally
+            {
+                if (maCnx is object & maCnx.State == ConnectionState.Open)
+                {
+                    maCnx.Close();
+                }
+            }
+        }
+        private void cmbBateaux_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
-
-        private void cmbBateaux_SelectedIndexChanged(object sender, EventArgs e)
+        private void lblNomBateau_Click(object sender, EventArgs e)
         {
 
         }
