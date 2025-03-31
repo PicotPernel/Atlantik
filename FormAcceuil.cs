@@ -54,12 +54,12 @@ namespace Atlantik
             FormModiferBateau formModiferBateau = new FormModiferBateau();
             formModiferBateau.Show();
         }
-        private void ajouterToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void lesTraversééesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormAfficherTraverseePourLiaisonEtDate lesTraverseePourUneDate = new FormAfficherTraverseePourLiaisonEtDate();
+            lesTraverseePourUneDate.Show();
+        }
+        private void ajouterToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }

@@ -65,6 +65,7 @@
             this.cmbLiaisons.Name = "cmbLiaisons";
             this.cmbLiaisons.Size = new System.Drawing.Size(317, 21);
             this.cmbLiaisons.TabIndex = 2;
+            this.cmbLiaisons.SelectedIndexChanged += new System.EventHandler(this.cmbLiaisons_SelectedIndexChanged);
             // 
             // lblLiaison
             // 

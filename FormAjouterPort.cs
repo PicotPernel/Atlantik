@@ -17,10 +17,6 @@ namespace Atlantik
         {
             InitializeComponent();
         }
-        private void txt_port_TextChanged(object sender, EventArgs e)
-        {
-
-        }
         private void btn_ajouter_Click(object sender, EventArgs e)
         {
             MySqlConnection maCnx;
@@ -49,6 +45,10 @@ namespace Atlantik
         }
 
         private void FormAjouterPort_Load(object sender, EventArgs e)
+        {
+
+        }
+        private void txt_port_TextChanged(object sender, EventArgs e)
         {
 
         }

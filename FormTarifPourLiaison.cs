@@ -18,7 +18,6 @@ namespace Atlantik
         {
             InitializeComponent();
         }
-
         private void FormTarifPourLiaison_Load(object sender, EventArgs e)
         {
             int hauteur = 0;
@@ -201,6 +200,11 @@ namespace Atlantik
 
         }
         private void gbxTarifs_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbLiaisons_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

@@ -62,7 +62,7 @@ namespace Atlantik
         }
         private void btnAjouter_Click(object sender, EventArgs e)
         {
-            int dernierNoBateau = 0;
+            long dernierNoBateau = 0;
             MySqlConnection maCnx;
             maCnx = new MySqlConnection("server=localhost;user=root;database=atlantik;port=3306;password=");
             try
@@ -73,25 +73,7 @@ namespace Atlantik
                 var maCde = new MySqlCommand(requête, maCnx);
                 maCde.Parameters.AddWithValue("@nomBateau", tbxNomBateau.Text);
                 MessageBox.Show("Lignes affectées : " + maCde.ExecuteNonQuery());
-            }
-            catch (MySqlException exception)
-            {
-                MessageBox.Show("Erreur " + exception.ToString());
-            }
-            finally
-            {
-                if (maCnx is object & maCnx.State == ConnectionState.Open)
-                {
-                    maCnx.Close();
-                }
-            }
-            try
-            {
-                string requête;
-                maCnx.Open();
-                requête = "SELECT * FROM bateau ORDER BY NOBATEAU DESC LIMIT 1";
-                var maCde = new MySqlCommand(requête, maCnx);
-                dernierNoBateau = int.Parse(maCde.ExecuteScalar().ToString());
+                dernierNoBateau = maCde.LastInsertedId;
             }
             catch (MySqlException exception)
             {
