@@ -27,7 +27,8 @@ namespace Atlantik
             {
                 string requête;
                 maCnx.Open();
-                requête = "SELECT * FROM categorie";
+                requête = "SELECT * " +
+                    "FROM categorie";
                 var maCde = new MySqlCommand(requête, maCnx);
                 jeuEnr = maCde.ExecuteReader();
                 while (jeuEnr.Read())
@@ -69,7 +70,8 @@ namespace Atlantik
             {
                 string requête;
                 maCnx.Open();
-                requête = "INSERT INTO bateau (NOM) VALUES (@nomBateau)";
+                requête = "INSERT INTO bateau (NOM) " +
+                    "VALUES (@nomBateau)";
                 var maCde = new MySqlCommand(requête, maCnx);
                 maCde.Parameters.AddWithValue("@nomBateau", tbxNomBateau.Text);
                 MessageBox.Show("Lignes affectées : " + maCde.ExecuteNonQuery());
@@ -94,12 +96,13 @@ namespace Atlantik
                     {
                         string requête;
                         maCnx.Open();
-                        requête = "INSERT INTO contenir (LETTRECATEGORIE, NOBATEAU, CAPACITEMAX) VALUES (@lettreCategorie, @noBateau, @capaciteMax)";
+                        requête = "INSERT INTO contenir (LETTRECATEGORIE, NOBATEAU, CAPACITEMAX) " +
+                            "VALUES (@lettreCategorie, @noBateau, @capaciteMax)";
                         var maCde = new MySqlCommand(requête, maCnx);
                         maCde.Parameters.AddWithValue("@lettreCategorie", element.Tag);
                         maCde.Parameters.AddWithValue("@noBateau", dernierNoBateau);
                         maCde.Parameters.AddWithValue("@capaciteMax", element.Text);
-                        MessageBox.Show("Modification effectuée");
+                        maCde.ExecuteNonQuery();
                     }
                     catch (MySqlException exception)
                     {

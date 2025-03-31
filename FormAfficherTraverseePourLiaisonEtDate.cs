@@ -17,7 +17,7 @@ namespace Atlantik
         {
             InitializeComponent();
         }
-        public int GetQuantitéEnregistrée(string lettreCategorie, int noTraversee)
+        public int GetQuantitéEnregistrée(int noTraversee, string lettreCategorie)
         {
             MySqlConnection maCnx;
             maCnx = new MySqlConnection("server=localhost;user=root;database=atlantik;port=3306;password=");
@@ -25,7 +25,12 @@ namespace Atlantik
             {
                 string requête;
                 maCnx.Open();
-                requête = "SELECT SUM(QUANTITERESERVEE) from traversee INNER JOIN reservation ON traversee.NOTRAVERSEE = reservation.NOTRAVERSEE INNER JOIN enregistrer ON enregistrer.NORESERVATION = reservation.NORESERVATION WHERE LETTRECATEGORIE = @lettreCategorie AND traversee.NOTRAVERSEE = @noTraversee ORDER BY LETTRECATEGORIE";
+                requête = "SELECT COALESCE(SUM(QUANTITERESERVEE), 0) " +
+                    "FROM traversee " +
+                    "INNER JOIN reservation ON traversee.NOTRAVERSEE = reservation.NOTRAVERSEE " +
+                    "INNER JOIN enregistrer ON enregistrer.NORESERVATION = reservation.NORESERVATION " +
+                    "WHERE LETTRECATEGORIE = @lettreCategorie AND traversee.NOTRAVERSEE = @noTraversee " +
+                    "ORDER BY LETTRECATEGORIE";
                 var maCde = new MySqlCommand(requête, maCnx);
                 maCde.Parameters.AddWithValue("@lettreCategorie", lettreCategorie);
                 maCde.Parameters.AddWithValue("@noTraversee", noTraversee);
@@ -44,7 +49,7 @@ namespace Atlantik
                 }
             }
         }
-        public int GetCapaciteMax(int noTraversee, int lettreCategorie)
+        public int GetCapaciteMax(int noTraversee, String lettreCategorie)
         {
             MySqlConnection maCnx;
             maCnx = new MySqlConnection("server=localhost;user=root;database=atlantik;port=3306;password=");
@@ -52,7 +57,11 @@ namespace Atlantik
             {
                 string requête;
                 maCnx.Open();
-                requête = "SELECT CAPACITEMAX FROM contenir INNER JOIN bateau ON bateau.NOBATEAU = contenir.NOBATEAU INNER JOIN traversee ON traversee.NOBATEAU = contenir.NOBATEAU WHERE LETTRECATEGORIE = @lettreCategorie AND NOTRAVERSEE = @noTraversee";
+                requête = "SELECT CAPACITEMAX " +
+                    "FROM contenir " +
+                    "INNER JOIN bateau ON bateau.NOBATEAU = contenir.NOBATEAU " +
+                    "INNER JOIN traversee ON traversee.NOBATEAU = contenir.NOBATEAU " +
+                    "WHERE LETTRECATEGORIE = @lettreCategorie AND NOTRAVERSEE = @noTraversee";
                 var maCde = new MySqlCommand(requête, maCnx);
                 maCde.Parameters.AddWithValue("@lettreCategorie", lettreCategorie);
                 maCde.Parameters.AddWithValue("@noTraversee", noTraversee);
@@ -73,8 +82,7 @@ namespace Atlantik
         }
         public List<Categorie> GetLesCategories()
         {
-            List<Categorie> categories = null;
-            int i = 0;
+            List<Categorie> categories = new List<Categorie>();
             MySqlConnection maCnx;
             MySqlDataReader jeuEnr = null;
             maCnx = new MySqlConnection("server=localhost;user=root;database=atlantik;port=3306;password=");
@@ -110,7 +118,7 @@ namespace Atlantik
         }
         public List<Traversee> GetLesTraverseesBateaux(int noLiaison, DateTime dateTraversee)
         {
-            List<Traversee> traversees = null;
+            List<Traversee> traversees = new List<Traversee>();
             MySqlConnection maCnx;
             MySqlDataReader jeuEnr = null;
             maCnx = new MySqlConnection("server=localhost;user=root;database=atlantik;port=3306;password=");
@@ -118,7 +126,10 @@ namespace Atlantik
             {
                 string requête;
                 maCnx.Open();
-                requête = "SELECT NOTRAVERSEE, DATEHEUREDEPART, NOM FROM traversee INNER JOIN bateau ON bateau.NOBATEAU = traversee.NOBATEAU where NOLIAISON = @noLiaison AND DATEHEUREDEPART = @dateTraversee";
+                requête = "SELECT NOTRAVERSEE, DATEHEUREDEPART, NOM " +
+                    "FROM traversee " +
+                    "INNER JOIN bateau ON bateau.NOBATEAU = traversee.NOBATEAU " +
+                    "WHERE NOLIAISON = @noLiaison AND DATE(DATEHEUREDEPART) = @dateTraversee";
                 var maCde = new MySqlCommand(requête, maCnx);
                 maCde.Parameters.AddWithValue("@noLiaison", noLiaison);
                 maCde.Parameters.AddWithValue("@dateTraversee", dateTraversee);
@@ -148,6 +159,7 @@ namespace Atlantik
         }
         private void FormAfficherTraverseePourLiaisonEtDate_Load(object sender, EventArgs e)
         {
+            dateTraversee.Value = DateTime.Today;
             lvTraversee.GridLines = true;
             lvTraversee.FullRowSelect = true;
             MySqlConnection maCnx;
@@ -157,7 +169,8 @@ namespace Atlantik
             {
                 string requête;
                 maCnx.Open();
-                requête = "SELECT * FROM secteur";
+                requête = "SELECT * " +
+                    "FROM secteur";
                 var maCde = new MySqlCommand(requête, maCnx);
                 jeuEnr = maCde.ExecuteReader();
                 while (jeuEnr.Read())
@@ -191,7 +204,11 @@ namespace Atlantik
             {
                 string requête;
                 maCnx.Open();
-                requête = "SELECT noLiaison, PortDepart.nom as 'Port départ', PortArrive.nom as 'Port arrivée' from LIAISON INNER JOIN port as PortDepart on (PortDepart.noport = noport_depart) INNER JOIN port as PortArrive ON (PortArrive.noport = noport_arrivee) WHERE NOSECTEUR = @noSecteur";
+                requête = "SELECT noLiaison, PortDepart.nom as 'Port départ', PortArrive.nom as 'Port arrivée' " +
+                    "FROM LIAISON " +
+                    "INNER JOIN port as PortDepart on (PortDepart.noport = noport_depart) " +
+                    "INNER JOIN port as PortArrive ON (PortArrive.noport = noport_arrivee) " +
+                    "WHERE NOSECTEUR = @noSecteur";
                 var maCde = new MySqlCommand(requête, maCnx);
                 maCde.Parameters.AddWithValue("@noSecteur", ((Secteur)lbxSecteurs.SelectedItem).GetNoSecteur());
                 jeuEnr = maCde.ExecuteReader();
@@ -215,22 +232,45 @@ namespace Atlantik
                     maCnx.Close();
                 }
             }
+            lvTraversee.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
         }
         private void btnAfficherTraversee_Click(object sender, EventArgs e)
         {
-            List<Categorie> lesCategories = GetLesCategories();
-            List<Traversee> lesTraversee = GetLesTraverseesBateaux(((Liaison)cmbLiaison.SelectedItem).GetNoLiaison(), dateTraversee.Value);
-            lvTraversee.Columns.Add("N°", 100);
-            lvTraversee.Columns.Add("Heure", 100);
-            lvTraversee.Columns.Add("Bateau", 100);
-            foreach(Categorie categorie in lesCategories)
+            int nbCategorie = 3;
+            lvTraversee.Clear();
+            lvTraversee.View = View.Details;
+            ListViewItem unItem;
+            List<Categorie> lesCategories = new List<Categorie>();
+            List<Traversee> lesTraversee = new List<Traversee>();
+            lesCategories = GetLesCategories();
+            lesTraversee = GetLesTraverseesBateaux(((Liaison)cmbLiaison.SelectedItem).GetNoLiaison(), dateTraversee.Value);
+            foreach (Categorie categorie in lesCategories)
+            {
+                nbCategorie += 1;
+            }
+            var tabItem = new string[nbCategorie];
+            lvTraversee.Columns.Add("N°", 50);
+            lvTraversee.Columns.Add("Heure", 50);
+            lvTraversee.Columns.Add("Bateau", 50);
+            foreach (Categorie categorie in lesCategories)
             {
                 lvTraversee.Columns.Add(((Categorie)categorie).ToString(), 100);
             }
-        }
-        private void lvTraversee_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+            foreach (Traversee traversee in lesTraversee)
+            {
+                int i = 2;
+                tabItem[0] = ((Traversee)traversee).GetNoTraversee().ToString();
+                tabItem[1] = ((Traversee)traversee).GetHeure().ToString();
+                tabItem[2] = ((Traversee)traversee).GetNomBateau().ToString();
+                foreach (Categorie categorie in lesCategories)
+                {
+                    i += 1;
+                    tabItem[i] = ((GetCapaciteMax(((Traversee)traversee).GetNoTraversee(), ((Categorie)categorie).GetLettreCategorie()) - 
+                        (((GetQuantitéEnregistrée(((Traversee)traversee).GetNoTraversee(), ((Categorie)categorie).GetLettreCategorie()))))).ToString());
+                }
+                unItem = new ListViewItem(tabItem);
+                lvTraversee.Items.Add(unItem);
+            }
         }
     }
 }

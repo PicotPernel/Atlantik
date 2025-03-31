@@ -41,7 +41,7 @@
             // lblSecteurs
             // 
             this.lblSecteurs.AutoSize = true;
-            this.lblSecteurs.Location = new System.Drawing.Point(32, 20);
+            this.lblSecteurs.Location = new System.Drawing.Point(12, 20);
             this.lblSecteurs.Name = "lblSecteurs";
             this.lblSecteurs.Size = new System.Drawing.Size(55, 13);
             this.lblSecteurs.TabIndex = 0;
@@ -50,7 +50,7 @@
             // lblLiaison
             // 
             this.lblLiaison.AutoSize = true;
-            this.lblLiaison.Location = new System.Drawing.Point(213, 20);
+            this.lblLiaison.Location = new System.Drawing.Point(183, 21);
             this.lblLiaison.Name = "lblLiaison";
             this.lblLiaison.Size = new System.Drawing.Size(46, 13);
             this.lblLiaison.TabIndex = 1;
@@ -59,26 +59,25 @@
             // lbxSecteurs
             // 
             this.lbxSecteurs.FormattingEnabled = true;
-            this.lbxSecteurs.Location = new System.Drawing.Point(35, 36);
+            this.lbxSecteurs.Location = new System.Drawing.Point(12, 36);
             this.lbxSecteurs.Name = "lbxSecteurs";
-            this.lbxSecteurs.Size = new System.Drawing.Size(152, 277);
+            this.lbxSecteurs.Size = new System.Drawing.Size(165, 615);
             this.lbxSecteurs.TabIndex = 2;
             this.lbxSecteurs.SelectedIndexChanged += new System.EventHandler(this.lbxSecteurs_SelectedIndexChanged);
             // 
             // lvTraversee
             // 
             this.lvTraversee.HideSelection = false;
-            this.lvTraversee.Location = new System.Drawing.Point(216, 62);
+            this.lvTraversee.Location = new System.Drawing.Point(183, 62);
             this.lvTraversee.Name = "lvTraversee";
-            this.lvTraversee.Size = new System.Drawing.Size(453, 251);
+            this.lvTraversee.Size = new System.Drawing.Size(936, 589);
             this.lvTraversee.TabIndex = 3;
             this.lvTraversee.UseCompatibleStateImageBehavior = false;
-            this.lvTraversee.SelectedIndexChanged += new System.EventHandler(this.lvTraversee_SelectedIndexChanged);
             // 
             // cmbLiaison
             // 
             this.cmbLiaison.FormattingEnabled = true;
-            this.cmbLiaison.Location = new System.Drawing.Point(216, 36);
+            this.cmbLiaison.Location = new System.Drawing.Point(183, 36);
             this.cmbLiaison.Name = "cmbLiaison";
             this.cmbLiaison.Size = new System.Drawing.Size(216, 21);
             this.cmbLiaison.TabIndex = 4;
@@ -86,7 +85,7 @@
             // lblDate
             // 
             this.lblDate.AutoSize = true;
-            this.lblDate.Location = new System.Drawing.Point(450, 21);
+            this.lblDate.Location = new System.Drawing.Point(421, 21);
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(129, 13);
             this.lblDate.TabIndex = 5;
@@ -96,16 +95,16 @@
             // 
             this.dateTraversee.CustomFormat = "dd/MM/yyyy";
             this.dateTraversee.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTraversee.Location = new System.Drawing.Point(453, 37);
+            this.dateTraversee.Location = new System.Drawing.Point(424, 37);
             this.dateTraversee.Name = "dateTraversee";
             this.dateTraversee.Size = new System.Drawing.Size(216, 20);
             this.dateTraversee.TabIndex = 6;
             // 
             // btnAfficherTraversee
             // 
-            this.btnAfficherTraversee.Location = new System.Drawing.Point(35, 319);
+            this.btnAfficherTraversee.Location = new System.Drawing.Point(12, 661);
             this.btnAfficherTraversee.Name = "btnAfficherTraversee";
-            this.btnAfficherTraversee.Size = new System.Drawing.Size(634, 23);
+            this.btnAfficherTraversee.Size = new System.Drawing.Size(1111, 23);
             this.btnAfficherTraversee.TabIndex = 7;
             this.btnAfficherTraversee.Text = "Afficher les traversées";
             this.btnAfficherTraversee.UseVisualStyleBackColor = true;
@@ -115,7 +114,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(681, 356);
+            this.ClientSize = new System.Drawing.Size(1133, 699);
             this.Controls.Add(this.btnAfficherTraversee);
             this.Controls.Add(this.dateTraversee);
             this.Controls.Add(this.lblDate);
