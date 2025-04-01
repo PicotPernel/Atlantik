@@ -28,7 +28,8 @@ namespace Atlantik
             {
                 string requête;
                 maCnx.Open();
-                requête = "SELECT * FROM type";
+                requête = "SELECT * " +
+                    "FROM type";
                 var maCde = new MySqlCommand(requête, maCnx);
                 jeuEnr = maCde.ExecuteReader();
                 while (jeuEnr.Read())
@@ -64,7 +65,8 @@ namespace Atlantik
             {
                 string requête;
                 maCnx.Open();
-                requête = "SELECT * FROM secteur";
+                requête = "SELECT * " +
+                    "FROM secteur";
                 var maCde = new MySqlCommand(requête, maCnx);
                 jeuEnr = maCde.ExecuteReader();
                 while (jeuEnr.Read())
@@ -91,7 +93,8 @@ namespace Atlantik
             {
                 string requête;
                 maCnx.Open();
-                requête = "SELECT * FROM periode";
+                requête = "SELECT * " +
+                    "FROM periode";
                 var maCde = new MySqlCommand(requête, maCnx);
                 jeuEnr = maCde.ExecuteReader();
                 while (jeuEnr.Read())
@@ -125,7 +128,11 @@ namespace Atlantik
             {
                 string requête;
                 maCnx.Open();
-                requête = "SELECT noLiaison, PortDepart.nom as 'Port départ', PortArrive.nom as 'Port arrivée' from LIAISON INNER JOIN port as PortDepart on (PortDepart.noport = noport_depart) INNER JOIN port as PortArrive ON (PortArrive.noport = noport_arrivee) WHERE NOSECTEUR = @noSecteur";
+                requête = "SELECT noLiaison, PortDepart.nom as 'Port départ', PortArrive.nom as 'Port arrivée' " +
+                    "FROM LIAISON " +
+                    "INNER JOIN port as PortDepart on (PortDepart.noport = noport_depart) " +
+                    "INNER JOIN port as PortArrive ON (PortArrive.noport = noport_arrivee) " +
+                    "WHERE NOSECTEUR = @noSecteur";
                 var maCde = new MySqlCommand(requête, maCnx);
                 maCde.Parameters.AddWithValue("@noSecteur", ((Secteur)lbxSecteurs.SelectedItem).GetNoSecteur());
                 jeuEnr = maCde.ExecuteReader();
@@ -163,7 +170,8 @@ namespace Atlantik
                     {
                         string requête;
                         maCnx.Open();
-                        requête = "INSERT INTO tarifer VALUES (@noPeriode, @lettreCategorie, @noType, @noLiaison, @tarif)";
+                        requête = "INSERT INTO tarifer " +
+                            "VALUES (@noPeriode, @lettreCategorie, @noType, @noLiaison, @tarif)";
                         var maCde = new MySqlCommand(requête, maCnx);
                         maCde.Parameters.AddWithValue("@noPeriode", ((Periode)cmbPeriodes.SelectedItem).GetNoPeriode());
                         maCde.Parameters.AddWithValue("@lettreCategorie", tags[0]);
@@ -194,19 +202,6 @@ namespace Atlantik
                     ((TextBox)element).Text = null;
                 }
             }
-        }
-        private void cmbPeriodes_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-        private void gbxTarifs_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cmbLiaisons_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

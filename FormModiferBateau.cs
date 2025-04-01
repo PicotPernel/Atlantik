@@ -23,7 +23,8 @@ namespace Atlantik
             {
                 string requête;
                 maCnx.Open();
-                requête = "Select * from Bateau";
+                requête = "SELECT * " +
+                    "FROM Bateau";
                 var maCde = new MySqlCommand(requête, maCnx);
                 jeuEnr = maCde.ExecuteReader();
                 while (jeuEnr.Read())
@@ -60,7 +61,8 @@ namespace Atlantik
             {
                 string requête;
                 maCnx.Open();
-                requête = "Select NOBATEAU, categorie.LETTRECATEGORIE, LIBELLE, CAPACITEMAX from categorie inner join contenir on (contenir.LETTRECATEGORIE = categorie.LETTRECATEGORIE) where NOBATEAU = @noBateau";
+                requête = "SELECT NOBATEAU, categorie.LETTRECATEGORIE, LIBELLE, CAPACITEMAX FROM categorie " +
+                    "INNER JOIN contenir on (contenir.LETTRECATEGORIE = categorie.LETTRECATEGORIE) WHERE NOBATEAU = @noBateau";
                 var maCde = new MySqlCommand(requête, maCnx);
                 maCde.Parameters.AddWithValue("@noBateau", ((Bateau)cmbNomBateau.SelectedItem).GetNoBateau());
                 jeuEnr = maCde.ExecuteReader();
@@ -108,7 +110,9 @@ namespace Atlantik
                     {
                         string requête;
                         maCnx.Open();
-                        requête = "UPDATE contenir SET CAPACITEMAX = @capacite WHERE contenir.LETTRECATEGORIE = @lettreCategorie AND contenir.NOBATEAU = @noBateau";
+                        requête = "UPDATE contenir " +
+                            "SET CAPACITEMAX = @capacite " +
+                            "WHERE contenir.LETTRECATEGORIE = @lettreCategorie AND contenir.NOBATEAU = @noBateau";
                         var maCde = new MySqlCommand(requête, maCnx);
                         maCde.Parameters.AddWithValue("@capacite", int.Parse(((TextBox)element).Text));
                         maCde.Parameters.AddWithValue("@lettreCategorie", ((TextBox)element).Tag);

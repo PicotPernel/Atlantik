@@ -25,10 +25,11 @@ namespace Atlantik
             {
                 string requête;
                 maCnx.Open();
-                requête = "Insert INTO port (nom) values (@nomPort)";
+                requête = "Insert INTO port (nom) " +
+                    "VALUES (@nomPort)";
                 var maCde = new MySqlCommand(requête, maCnx);
                 maCde.Parameters.AddWithValue("@nomPort", tbxPort.Text);
-                MessageBox.Show("Lignes affectés : " + maCde.ExecuteNonQuery());
+                MessageBox.Show("Lignes ajoutées : " + maCde.ExecuteNonQuery());
                 tbxPort.Text = null;
             }
             catch (MySqlException exception)
@@ -42,15 +43,6 @@ namespace Atlantik
                     maCnx.Close();
                 }
             }
-        }
-
-        private void FormAjouterPort_Load(object sender, EventArgs e)
-        {
-
-        }
-        private void txt_port_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

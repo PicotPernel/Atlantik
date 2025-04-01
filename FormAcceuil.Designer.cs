@@ -71,7 +71,6 @@
             this.mmAjouter.Name = "mmAjouter";
             this.mmAjouter.Size = new System.Drawing.Size(58, 20);
             this.mmAjouter.Text = "Ajouter";
-            this.mmAjouter.Click += new System.EventHandler(this.ajouterToolStripMenuItem_Click);
             // 
             // miUnSecteurAjouter
             // 
@@ -175,7 +174,6 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormAccueil";
             this.Text = "Atlantik - Accueil";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

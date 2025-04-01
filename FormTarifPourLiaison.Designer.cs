@@ -46,7 +46,6 @@
             this.gbxTarifs.TabIndex = 0;
             this.gbxTarifs.TabStop = false;
             this.gbxTarifs.Text = "Tarifs par Catégorie - Type";
-            this.gbxTarifs.Enter += new System.EventHandler(this.gbxTarifs_Enter);
             // 
             // btnAjouter
             // 
@@ -65,7 +64,6 @@
             this.cmbLiaisons.Name = "cmbLiaisons";
             this.cmbLiaisons.Size = new System.Drawing.Size(317, 21);
             this.cmbLiaisons.TabIndex = 2;
-            this.cmbLiaisons.SelectedIndexChanged += new System.EventHandler(this.cmbLiaisons_SelectedIndexChanged);
             // 
             // lblLiaison
             // 
@@ -92,7 +90,6 @@
             this.cmbPeriodes.Name = "cmbPeriodes";
             this.cmbPeriodes.Size = new System.Drawing.Size(317, 21);
             this.cmbPeriodes.TabIndex = 5;
-            this.cmbPeriodes.SelectedIndexChanged += new System.EventHandler(this.cmbPeriodes_SelectedIndexChanged);
             // 
             // lbxSecteurs
             // 

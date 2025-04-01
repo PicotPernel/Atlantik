@@ -40,7 +40,6 @@
             this.tbxPort.TabIndex = 0;
             this.tbxPort.Text = "Nom du port";
             this.tbxPort.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tbxPort.TextChanged += new System.EventHandler(this.txt_port_TextChanged);
             // 
             // btnAjouter
             // 
@@ -61,7 +60,6 @@
             this.Controls.Add(this.tbxPort);
             this.Name = "FormAjouterPort";
             this.Text = "Atlantik - Ajouter un port";
-            this.Load += new System.EventHandler(this.FormAjouterPort_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

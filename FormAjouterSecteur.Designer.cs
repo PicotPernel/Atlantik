@@ -40,7 +40,6 @@
             this.tbxSecteur.TabIndex = 0;
             this.tbxSecteur.Text = "Nom du secteur";
             this.tbxSecteur.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tbxSecteur.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // btnAjouterSecteur
             // 
@@ -62,7 +61,6 @@
             this.Controls.Add(this.tbxSecteur);
             this.Name = "FormAjouterSecteur";
             this.Text = "Atlantik - Ajouter un secteur";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

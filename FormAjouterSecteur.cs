@@ -20,17 +20,6 @@ namespace Atlantik
         {
             InitializeComponent();
         }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonAjouterSecteur_Click(object sender, EventArgs e)
         {
             MySqlConnection maCnx;
@@ -39,10 +28,11 @@ namespace Atlantik
             {
                 string requête;
                 maCnx.Open();
-                requête = "Insert INTO secteur (nom) values (@nomSecteur)";
+                requête = "Insert INTO secteur (nom) " +
+                    "VALUES (@nomSecteur)";
                 var maCde = new MySqlCommand(requête, maCnx);
                 maCde.Parameters.AddWithValue("@nomSecteur", tbxSecteur.Text);
-                MessageBox.Show("Lignes affectés : " + maCde.ExecuteNonQuery());
+                MessageBox.Show("Lignes ajoutées : " + maCde.ExecuteNonQuery());
                 tbxSecteur.Text = null;
             }
             catch (MySqlException exception)
@@ -56,11 +46,6 @@ namespace Atlantik
                     maCnx.Close();
                 }
             }
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

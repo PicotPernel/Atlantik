@@ -126,13 +126,5 @@ namespace Atlantik
                 }
             }
         }
-        private void tbxNomBateau_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-        private void gbxCapaciteMax_Enter(object sender, EventArgs e)
-        {
-
-        }
     }
 }

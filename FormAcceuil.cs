@@ -59,13 +59,5 @@ namespace Atlantik
             FormAfficherTraverseePourLiaisonEtDate lesTraverseePourUneDate = new FormAfficherTraverseePourLiaisonEtDate();
             lesTraverseePourUneDate.Show();
         }
-        private void ajouterToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

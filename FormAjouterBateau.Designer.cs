@@ -61,7 +61,6 @@
             this.gbxCapaciteMax.TabIndex = 5;
             this.gbxCapaciteMax.TabStop = false;
             this.gbxCapaciteMax.Text = "Capacités maximales";
-            this.gbxCapaciteMax.Enter += new System.EventHandler(this.gbxCapaciteMax_Enter);
             // 
             // tbxNomBateau
             // 
@@ -69,7 +68,6 @@
             this.tbxNomBateau.Name = "tbxNomBateau";
             this.tbxNomBateau.Size = new System.Drawing.Size(295, 20);
             this.tbxNomBateau.TabIndex = 9;
-            this.tbxNomBateau.TextChanged += new System.EventHandler(this.tbxNomBateau_TextChanged);
             // 
             // FormAjouterBateau
             // 

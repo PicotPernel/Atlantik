@@ -236,7 +236,7 @@ namespace Atlantik
         }
         private void btnAfficherTraversee_Click(object sender, EventArgs e)
         {
-            int nbCategorie = 3;
+            int tailleTab = 3;
             lvTraversee.Clear();
             lvTraversee.View = View.Details;
             ListViewItem unItem;
@@ -244,11 +244,8 @@ namespace Atlantik
             List<Traversee> lesTraversee = new List<Traversee>();
             lesCategories = GetLesCategories();
             lesTraversee = GetLesTraverseesBateaux(((Liaison)cmbLiaison.SelectedItem).GetNoLiaison(), dateTraversee.Value);
-            foreach (Categorie categorie in lesCategories)
-            {
-                nbCategorie += 1;
-            }
-            var tabItem = new string[nbCategorie];
+            tailleTab = lesCategories.Count();
+            var tabItem = new string[tailleTab];
             lvTraversee.Columns.Add("N°", 50);
             lvTraversee.Columns.Add("Heure", 50);
             lvTraversee.Columns.Add("Bateau", 50);

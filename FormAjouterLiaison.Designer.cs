@@ -55,7 +55,6 @@
             this.lbxSecteurs.Name = "lbxSecteurs";
             this.lbxSecteurs.Size = new System.Drawing.Size(120, 329);
             this.lbxSecteurs.TabIndex = 1;
-            this.lbxSecteurs.SelectedIndexChanged += new System.EventHandler(this.lbxSecteurs_SelectedIndexChanged);
             // 
             // lblDepart
             // 
@@ -73,7 +72,6 @@
             this.cmbDepart.Name = "cmbDepart";
             this.cmbDepart.Size = new System.Drawing.Size(121, 21);
             this.cmbDepart.TabIndex = 3;
-            this.cmbDepart.SelectedIndexChanged += new System.EventHandler(this.cmbDepart_SelectedIndexChanged);
             // 
             // lblArrive
             // 
@@ -107,7 +105,6 @@
             this.tbxDistance.Name = "tbxDistance";
             this.tbxDistance.Size = new System.Drawing.Size(118, 20);
             this.tbxDistance.TabIndex = 7;
-            this.tbxDistance.TextChanged += new System.EventHandler(this.tbxDistance_TextChanged);
             // 
             // btnAjouter
             // 

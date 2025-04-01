@@ -29,7 +29,8 @@ namespace Atlantik
             {
                 string requête;
                 maCnx.Open();
-                requête = "Select * from secteur";
+                requête = "SELECT * " +
+                    "FROM secteur";
                 var maCde = new MySqlCommand(requête, maCnx);
                 jeuEnr = maCde.ExecuteReader();
                 while (jeuEnr.Read())
@@ -57,7 +58,8 @@ namespace Atlantik
             {
                 string requête;
                 maCnx.Open();
-                requête = "Select * from port";
+                requête = "SELECT * " +
+                    "FROM port";
                 var maCde = new MySqlCommand(requête, maCnx);
                 jeuEnr = maCde.ExecuteReader();
                 while (jeuEnr.Read())
@@ -90,13 +92,14 @@ namespace Atlantik
             {
                 string requête;
                 maCnx.Open();
-                requête = "Insert INTO liaison (NOPORT_DEPART, NOSECTEUR, NOPORT_ARRIVEE, DISTANCE) VALUES (@noDepart, @noSecteur, @noArrivee, @distance)";
+                requête = "Insert INTO liaison (NOPORT_DEPART, NOSECTEUR, NOPORT_ARRIVEE, DISTANCE) " +
+                    "VALUES (@noDepart, @noSecteur, @noArrivee, @distance)";
                 var maCde = new MySqlCommand(requête, maCnx);
                 maCde.Parameters.AddWithValue("@noDepart", (((Port)cmbDepart.SelectedItem).GetNoPort()));
                 maCde.Parameters.AddWithValue("@noArrivee", (((Port)cmbArrivee.SelectedItem).GetNoPort()));
                 maCde.Parameters.AddWithValue("@noSecteur", (((Secteur)lbxSecteurs.SelectedItem).GetNoSecteur()));
                 maCde.Parameters.AddWithValue("@distance", double.Parse(tbxDistance.Text));
-                MessageBox.Show("Lignes affectées : " + maCde.ExecuteNonQuery());
+                MessageBox.Show("Lignes ajoutées : " + maCde.ExecuteNonQuery());
                 cmbDepart.SelectedItem = null;
                 cmbArrivee.SelectedItem = null;
                 lbxSecteurs.SelectedItem = null;
@@ -113,20 +116,6 @@ namespace Atlantik
                     maCnx.Close();
                 }
             }
-        }
-        private void lbxSecteurs_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cmbDepart_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbxDistance_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
