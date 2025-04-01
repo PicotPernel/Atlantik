@@ -36,7 +36,7 @@
             // 
             // btnAjouter
             // 
-            this.btnAjouter.Location = new System.Drawing.Point(30, 633);
+            this.btnAjouter.Location = new System.Drawing.Point(29, 633);
             this.btnAjouter.Name = "btnAjouter";
             this.btnAjouter.Size = new System.Drawing.Size(295, 23);
             this.btnAjouter.TabIndex = 7;
@@ -47,7 +47,7 @@
             // lblNomDuBateau
             // 
             this.lblNomDuBateau.AutoSize = true;
-            this.lblNomDuBateau.Location = new System.Drawing.Point(27, 22);
+            this.lblNomDuBateau.Location = new System.Drawing.Point(26, 22);
             this.lblNomDuBateau.Name = "lblNomDuBateau";
             this.lblNomDuBateau.Size = new System.Drawing.Size(86, 13);
             this.lblNomDuBateau.TabIndex = 6;
@@ -55,7 +55,7 @@
             // 
             // gbxCapaciteMax
             // 
-            this.gbxCapaciteMax.Location = new System.Drawing.Point(30, 85);
+            this.gbxCapaciteMax.Location = new System.Drawing.Point(29, 85);
             this.gbxCapaciteMax.Name = "gbxCapaciteMax";
             this.gbxCapaciteMax.Size = new System.Drawing.Size(295, 542);
             this.gbxCapaciteMax.TabIndex = 5;
@@ -64,7 +64,7 @@
             // 
             // tbxNomBateau
             // 
-            this.tbxNomBateau.Location = new System.Drawing.Point(30, 38);
+            this.tbxNomBateau.Location = new System.Drawing.Point(29, 38);
             this.tbxNomBateau.Name = "tbxNomBateau";
             this.tbxNomBateau.Size = new System.Drawing.Size(295, 20);
             this.tbxNomBateau.TabIndex = 9;

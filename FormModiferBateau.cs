@@ -48,11 +48,9 @@ namespace Atlantik
                 }
             }
         }
-        private void FormAjouterBateau_Load(object sender, EventArgs e)
-        {
-        }
         private void cmbNomBateau_SelectedIndexChanged(object sender, EventArgs e)
         {
+            gbxCapaciteMax.Controls.Clear();
             int hauteur = 0;
             MySqlConnection maCnx;
             MySqlDataReader jeuEnr = null;
@@ -100,6 +98,7 @@ namespace Atlantik
         }
         private void btnModifier_Click(object sender, EventArgs e)
         {
+            Boolean erreur = false;
             MySqlConnection maCnx;
             maCnx = new MySqlConnection("server=localhost;user=root;database=atlantik;port=3306;password=");
             foreach (Control element in gbxCapaciteMax.Controls)
@@ -117,10 +116,12 @@ namespace Atlantik
                         maCde.Parameters.AddWithValue("@capacite", int.Parse(((TextBox)element).Text));
                         maCde.Parameters.AddWithValue("@lettreCategorie", ((TextBox)element).Tag);
                         maCde.Parameters.AddWithValue("@noBateau", ((Bateau)cmbNomBateau.SelectedItem).GetNoBateau());
-                        MessageBox.Show("Modification effectuée");
+                        maCde.ExecuteNonQuery();
+                        erreur = false;
                     }
                     catch (MySqlException exception)
                     {
+                        erreur = true;
                         MessageBox.Show("Erreur " + exception.ToString());
                     }
                     finally
@@ -132,10 +133,7 @@ namespace Atlantik
                     }
                 }
             }
-        }
-        private void gbxCapaciteMax_Enter(object sender, EventArgs e)
-        {
-
+            MessageBox.Show("Modification effectuée");
         }
     }   
 }

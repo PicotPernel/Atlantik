@@ -42,7 +42,7 @@
             // lblSecteur
             // 
             this.lblSecteur.AutoSize = true;
-            this.lblSecteur.Location = new System.Drawing.Point(43, 52);
+            this.lblSecteur.Location = new System.Drawing.Point(26, 35);
             this.lblSecteur.Name = "lblSecteur";
             this.lblSecteur.Size = new System.Drawing.Size(55, 13);
             this.lblSecteur.TabIndex = 0;
@@ -51,15 +51,15 @@
             // lbxSecteurs
             // 
             this.lbxSecteurs.FormattingEnabled = true;
-            this.lbxSecteurs.Location = new System.Drawing.Point(46, 79);
+            this.lbxSecteurs.Location = new System.Drawing.Point(29, 62);
             this.lbxSecteurs.Name = "lbxSecteurs";
-            this.lbxSecteurs.Size = new System.Drawing.Size(120, 329);
+            this.lbxSecteurs.Size = new System.Drawing.Size(177, 329);
             this.lbxSecteurs.TabIndex = 1;
             // 
             // lblDepart
             // 
             this.lblDepart.AutoSize = true;
-            this.lblDepart.Location = new System.Drawing.Point(222, 52);
+            this.lblDepart.Location = new System.Drawing.Point(227, 35);
             this.lblDepart.Name = "lblDepart";
             this.lblDepart.Size = new System.Drawing.Size(45, 13);
             this.lblDepart.TabIndex = 2;
@@ -68,15 +68,15 @@
             // cmbDepart
             // 
             this.cmbDepart.FormattingEnabled = true;
-            this.cmbDepart.Location = new System.Drawing.Point(225, 79);
+            this.cmbDepart.Location = new System.Drawing.Point(230, 63);
             this.cmbDepart.Name = "cmbDepart";
-            this.cmbDepart.Size = new System.Drawing.Size(121, 21);
+            this.cmbDepart.Size = new System.Drawing.Size(177, 21);
             this.cmbDepart.TabIndex = 3;
             // 
             // lblArrive
             // 
             this.lblArrive.AutoSize = true;
-            this.lblArrive.Location = new System.Drawing.Point(222, 130);
+            this.lblArrive.Location = new System.Drawing.Point(227, 105);
             this.lblArrive.Name = "lblArrive";
             this.lblArrive.Size = new System.Drawing.Size(46, 13);
             this.lblArrive.TabIndex = 4;
@@ -85,15 +85,15 @@
             // cmbArrivee
             // 
             this.cmbArrivee.FormattingEnabled = true;
-            this.cmbArrivee.Location = new System.Drawing.Point(225, 155);
+            this.cmbArrivee.Location = new System.Drawing.Point(230, 133);
             this.cmbArrivee.Name = "cmbArrivee";
-            this.cmbArrivee.Size = new System.Drawing.Size(121, 21);
+            this.cmbArrivee.Size = new System.Drawing.Size(177, 21);
             this.cmbArrivee.TabIndex = 5;
             // 
             // lblDistance
             // 
             this.lblDistance.AutoSize = true;
-            this.lblDistance.Location = new System.Drawing.Point(225, 206);
+            this.lblDistance.Location = new System.Drawing.Point(227, 175);
             this.lblDistance.Name = "lblDistance";
             this.lblDistance.Size = new System.Drawing.Size(49, 13);
             this.lblDistance.TabIndex = 6;
@@ -101,16 +101,16 @@
             // 
             // tbxDistance
             // 
-            this.tbxDistance.Location = new System.Drawing.Point(228, 231);
+            this.tbxDistance.Location = new System.Drawing.Point(230, 200);
             this.tbxDistance.Name = "tbxDistance";
-            this.tbxDistance.Size = new System.Drawing.Size(118, 20);
+            this.tbxDistance.Size = new System.Drawing.Size(177, 20);
             this.tbxDistance.TabIndex = 7;
             // 
             // btnAjouter
             // 
-            this.btnAjouter.Location = new System.Drawing.Point(225, 368);
+            this.btnAjouter.Location = new System.Drawing.Point(230, 367);
             this.btnAjouter.Name = "btnAjouter";
-            this.btnAjouter.Size = new System.Drawing.Size(121, 40);
+            this.btnAjouter.Size = new System.Drawing.Size(177, 23);
             this.btnAjouter.TabIndex = 8;
             this.btnAjouter.Text = "Ajouter";
             this.btnAjouter.UseVisualStyleBackColor = true;
@@ -120,7 +120,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(392, 455);
+            this.ClientSize = new System.Drawing.Size(441, 436);
             this.Controls.Add(this.btnAjouter);
             this.Controls.Add(this.tbxDistance);
             this.Controls.Add(this.lblDistance);

@@ -32,7 +32,8 @@ namespace Atlantik
                     "VALUES (@nomSecteur)";
                 var maCde = new MySqlCommand(requête, maCnx);
                 maCde.Parameters.AddWithValue("@nomSecteur", tbxSecteur.Text);
-                MessageBox.Show("Lignes ajoutées : " + maCde.ExecuteNonQuery());
+                maCde.ExecuteNonQuery();
+                MessageBox.Show("Modification effectuée");
                 tbxSecteur.Text = null;
             }
             catch (MySqlException exception)

@@ -206,7 +206,7 @@ namespace Atlantik
                 maCnx.Open();
                 requête = "SELECT noLiaison, PortDepart.nom as 'Port départ', PortArrive.nom as 'Port arrivée' " +
                     "FROM LIAISON " +
-                    "INNER JOIN port as PortDepart on (PortDepart.noport = noport_depart) " +
+                    "INNER JOIN port as PortDepart ON (PortDepart.noport = noport_depart) " +
                     "INNER JOIN port as PortArrive ON (PortArrive.noport = noport_arrivee) " +
                     "WHERE NOSECTEUR = @noSecteur";
                 var maCde = new MySqlCommand(requête, maCnx);
@@ -244,7 +244,7 @@ namespace Atlantik
             List<Traversee> lesTraversee = new List<Traversee>();
             lesCategories = GetLesCategories();
             lesTraversee = GetLesTraverseesBateaux(((Liaison)cmbLiaison.SelectedItem).GetNoLiaison(), dateTraversee.Value);
-            tailleTab = lesCategories.Count();
+            tailleTab = lesCategories.Count() + 3;
             var tabItem = new string[tailleTab];
             lvTraversee.Columns.Add("N°", 50);
             lvTraversee.Columns.Add("Heure", 50);

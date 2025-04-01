@@ -92,14 +92,15 @@ namespace Atlantik
             {
                 string requête;
                 maCnx.Open();
-                requête = "Insert INTO liaison (NOPORT_DEPART, NOSECTEUR, NOPORT_ARRIVEE, DISTANCE) " +
+                requête = "INSERT INTO liaison (NOPORT_DEPART, NOSECTEUR, NOPORT_ARRIVEE, DISTANCE) " +
                     "VALUES (@noDepart, @noSecteur, @noArrivee, @distance)";
                 var maCde = new MySqlCommand(requête, maCnx);
                 maCde.Parameters.AddWithValue("@noDepart", (((Port)cmbDepart.SelectedItem).GetNoPort()));
                 maCde.Parameters.AddWithValue("@noArrivee", (((Port)cmbArrivee.SelectedItem).GetNoPort()));
                 maCde.Parameters.AddWithValue("@noSecteur", (((Secteur)lbxSecteurs.SelectedItem).GetNoSecteur()));
                 maCde.Parameters.AddWithValue("@distance", double.Parse(tbxDistance.Text));
-                MessageBox.Show("Lignes ajoutées : " + maCde.ExecuteNonQuery());
+                maCde.ExecuteNonQuery();
+                MessageBox.Show("Ajout effectué");
                 cmbDepart.SelectedItem = null;
                 cmbArrivee.SelectedItem = null;
                 lbxSecteurs.SelectedItem = null;

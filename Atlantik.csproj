@@ -143,6 +143,12 @@
     <Compile Include="Liaison.cs" />
     <Compile Include="Periode.cs" />
     <Compile Include="Port.cs" />
+    <Compile Include="ReservationPourClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReservationPourClient.Designer.cs">
+      <DependentUpon>ReservationPourClient.cs</DependentUpon>
+    </Compile>
     <Compile Include="Secteur.cs" />
     <Compile Include="FormAjouterPort.cs">
       <SubType>Form</SubType>
@@ -200,7 +206,11 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ReservationPourClient.resx">
+      <DependentUpon>ReservationPourClient.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -214,6 +224,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bateau.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

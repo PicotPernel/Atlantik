@@ -58,7 +58,6 @@
             this.lblNomBateau.Size = new System.Drawing.Size(71, 13);
             this.lblNomBateau.TabIndex = 1;
             this.lblNomBateau.Text = "Nom bateau :";
-            this.lblNomBateau.Click += new System.EventHandler(this.lblNomBateau_Click);
             // 
             // cmbBateaux
             // 
@@ -67,7 +66,6 @@
             this.cmbBateaux.Name = "cmbBateaux";
             this.cmbBateaux.Size = new System.Drawing.Size(177, 21);
             this.cmbBateaux.TabIndex = 2;
-            this.cmbBateaux.SelectedIndexChanged += new System.EventHandler(this.cmbBateaux_SelectedIndexChanged);
             // 
             // lbxSecteurs
             // 

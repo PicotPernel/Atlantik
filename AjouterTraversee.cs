@@ -26,7 +26,8 @@ namespace Atlantik
             {
                 string requête;
                 maCnx.Open();
-                requête = "SELECT * FROM secteur";
+                requête = "SELECT * " +
+                    "FROM secteur";
                 var maCde = new MySqlCommand(requête, maCnx);
                 jeuEnr = maCde.ExecuteReader();
                 while (jeuEnr.Read())
@@ -53,7 +54,8 @@ namespace Atlantik
             {
                 string requête;
                 maCnx.Open();
-                requête = "SELECT * FROM bateau";
+                requête = "SELECT * " +
+                    "FROM bateau";
                 var maCde = new MySqlCommand(requête, maCnx);
                 jeuEnr = maCde.ExecuteReader();
                 while (jeuEnr.Read())
@@ -86,7 +88,11 @@ namespace Atlantik
             {
                 string requête;
                 maCnx.Open();
-                requête = "SELECT noLiaison, PortDepart.nom as 'Port départ', PortArrive.nom as 'Port arrivée' from LIAISON INNER JOIN port as PortDepart on (PortDepart.noport = noport_depart) INNER JOIN port as PortArrive ON (PortArrive.noport = noport_arrivee) WHERE NOSECTEUR = @noSecteur";
+                requête = "SELECT noLiaison, PortDepart.nom as 'Port départ', PortArrive.nom as 'Port arrivée' " +
+                    "FROM LIAISON " +
+                    "INNER JOIN port as PortDepart ON (PortDepart.noport = noport_depart) " +
+                    "INNER JOIN port as PortArrive ON (PortArrive.noport = noport_arrivee) " +
+                    "WHERE NOSECTEUR = @noSecteur";
                 var maCde = new MySqlCommand(requête, maCnx);
                 maCde.Parameters.AddWithValue("@noSecteur", ((Secteur)lbxSecteurs.SelectedItem).GetNoSecteur());
                 jeuEnr = maCde.ExecuteReader();
@@ -119,7 +125,8 @@ namespace Atlantik
             {
                 string requête;
                 maCnx.Open();
-                requête = "INSERT INTO traversee (NOLIAISON, NOBATEAU, DATEHEUREDEPART, DATEHEUREARRIVEE, CLOTUREEMBARQUEMENT) VALUES (@noLiaison, @noBateau, @dateHeureDepart, @dateHeureArrivee, 0)";
+                requête = "INSERT INTO traversee (NOLIAISON, NOBATEAU, DATEHEUREDEPART, DATEHEUREARRIVEE, CLOTUREEMBARQUEMENT) " +
+                    "VALUES (@noLiaison, @noBateau, @dateHeureDepart, @dateHeureArrivee, 0)";
                 var maCde = new MySqlCommand(requête, maCnx);
                 maCde.Parameters.AddWithValue("@noLiaison", ((Liaison)cmbLiaison.SelectedItem).GetNoLiaison());
                 maCde.Parameters.AddWithValue("@noBateau", ((Bateau)cmbBateaux.SelectedItem).GetNoBateau());
@@ -138,14 +145,6 @@ namespace Atlantik
                     maCnx.Close();
                 }
             }
-        }
-        private void cmbBateaux_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-        private void lblNomBateau_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

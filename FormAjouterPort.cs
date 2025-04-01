@@ -29,7 +29,8 @@ namespace Atlantik
                     "VALUES (@nomPort)";
                 var maCde = new MySqlCommand(requête, maCnx);
                 maCde.Parameters.AddWithValue("@nomPort", tbxPort.Text);
-                MessageBox.Show("Lignes ajoutées : " + maCde.ExecuteNonQuery());
+                maCde.ExecuteNonQuery();
+                MessageBox.Show("Modification effectué");
                 tbxPort.Text = null;
             }
             catch (MySqlException exception)

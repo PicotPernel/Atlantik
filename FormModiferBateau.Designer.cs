@@ -42,7 +42,6 @@
             this.gbxCapaciteMax.TabIndex = 0;
             this.gbxCapaciteMax.TabStop = false;
             this.gbxCapaciteMax.Text = "Capacités maximales";
-            this.gbxCapaciteMax.Enter += new System.EventHandler(this.gbxCapaciteMax_Enter);
             // 
             // lblNomDuBateau
             // 
@@ -83,7 +82,6 @@
             this.Controls.Add(this.gbxCapaciteMax);
             this.Name = "FormModiferBateau";
             this.Text = "Atlantik - Modifer un bateau";
-            this.Load += new System.EventHandler(this.FormAjouterBateau_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
