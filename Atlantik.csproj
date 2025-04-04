@@ -142,6 +142,12 @@
       <DependentUpon>FormTarifPourLiaison.cs</DependentUpon>
     </Compile>
     <Compile Include="Liaison.cs" />
+    <Compile Include="ModifierParametres.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModifierParametres.Designer.cs">
+      <DependentUpon>ModifierParametres.cs</DependentUpon>
+    </Compile>
     <Compile Include="Periode.cs" />
     <Compile Include="Port.cs" />
     <Compile Include="ReservationPourClient.cs">
@@ -198,6 +204,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormTarifPourLiaison.resx">
       <DependentUpon>FormTarifPourLiaison.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModifierParametres.resx">
+      <DependentUpon>ModifierParametres.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

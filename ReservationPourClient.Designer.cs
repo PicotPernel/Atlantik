@@ -65,9 +65,10 @@
             // 
             // gbxDetailsReservation
             // 
+            this.gbxDetailsReservation.BackColor = System.Drawing.Color.Transparent;
             this.gbxDetailsReservation.Location = new System.Drawing.Point(34, 180);
             this.gbxDetailsReservation.Name = "gbxDetailsReservation";
-            this.gbxDetailsReservation.Size = new System.Drawing.Size(740, 226);
+            this.gbxDetailsReservation.Size = new System.Drawing.Size(740, 357);
             this.gbxDetailsReservation.TabIndex = 3;
             this.gbxDetailsReservation.TabStop = false;
             this.gbxDetailsReservation.Text = "Réservation";
@@ -76,7 +77,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 418);
+            this.ClientSize = new System.Drawing.Size(800, 549);
             this.Controls.Add(this.gbxDetailsReservation);
             this.Controls.Add(this.lvReservation);
             this.Controls.Add(this.cmbNomPrenom);

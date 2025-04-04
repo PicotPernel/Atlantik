@@ -150,7 +150,7 @@ namespace Atlantik
                 string requête;
                 maCnx = new MySqlConnection("server=localhost;user=root;database=atlantik;port=3306;password=");
                 maCnx.Open();
-                requête = "SELECT LIBELLE, QUANTITERESERVEE, MONTANTTOTAL " +
+                requête = "SELECT categorie.LETTRECATEGORIE, LIBELLE, QUANTITERESERVEE, MONTANTTOTAL, COALESCE(MODEREGLEMENT, \"Non renseigné\") " +
                     "FROM enregistrer INNER JOIN categorie ON categorie.LETTRECATEGORIE = enregistrer.LETTRECATEGORIE " +
                     "INNER JOIN reservation ON reservation.NORESERVATION = enregistrer.NORESERVATION " +
                     "WHERE reservation.NORESERVATION = @noReservation";
@@ -173,10 +173,16 @@ namespace Atlantik
                 }
                 hauteur += 1;
                 Label lblMontant = new Label();
-                lblMontant.Size = new Size(130, 20);
+                lblMontant.Size = new Size(150, 20);
                 lblMontant.Text = "Montant Total : " + jeuEnr["MONTANTTOTAL"].ToString();
-                lblMontant.Location = new Point(100, hauteur * 25);
+                lblMontant.Location = new Point(10, hauteur * 25);
                 gbxDetailsReservation.Controls.Add(lblMontant);
+                hauteur += 1;
+                Label lblReglement = new Label();
+                lblReglement.Size = new Size(500, 20);
+                lblReglement.Text = "Mode de paiement : " +(jeuEnr.GetValue(4)).ToString();
+                lblReglement.Location = new Point(10, hauteur * 25);
+                gbxDetailsReservation.Controls.Add(lblReglement);
             }
             catch (MySqlException exception)
             {

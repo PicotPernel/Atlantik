@@ -137,6 +137,7 @@
             this.miParametresModifier.Name = "miParametresModifier";
             this.miParametresModifier.Size = new System.Drawing.Size(191, 22);
             this.miParametresModifier.Text = "Les paramètres du site";
+            this.miParametresModifier.Click += new System.EventHandler(this.miParametresModifier_Click);
             // 
             // mmAficher
             // 

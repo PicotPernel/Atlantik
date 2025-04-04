@@ -65,5 +65,11 @@ namespace Atlantik
             FormReservationPourClient formReservationPourClient = new FormReservationPourClient();
             formReservationPourClient.Show();
         }
+
+        private void miParametresModifier_Click(object sender, EventArgs e)
+        {
+            FormModifierParametres formModifierParametres = new FormModifierParametres();
+            formModifierParametres.Show();
+        }
     }
 }
