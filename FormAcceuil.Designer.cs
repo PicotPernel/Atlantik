@@ -49,6 +49,7 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.Transparent;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mmAjouter,
             this.mmModifier,
@@ -159,6 +160,7 @@
             this.miDetailsReservationsAfficher.Name = "miDetailsReservationsAfficher";
             this.miDetailsReservationsAfficher.Size = new System.Drawing.Size(529, 22);
             this.miDetailsReservationsAfficher.Text = "Les détails d\'une reservation pour un client";
+            this.miDetailsReservationsAfficher.Click += new System.EventHandler(this.miDetailsReservationsAfficher_Click);
             // 
             // mmAPropos
             // 

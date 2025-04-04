@@ -1,6 +1,6 @@
 ﻿namespace Atlantik
 {
-    partial class ReservationPourClient
+    partial class FormReservationPourClient
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,8 @@
         {
             this.lblNomPrenom = new System.Windows.Forms.Label();
             this.cmbNomPrenom = new System.Windows.Forms.ComboBox();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.lvReservation = new System.Windows.Forms.ListView();
+            this.gbxDetailsReservation = new System.Windows.Forms.GroupBox();
             this.SuspendLayout();
             // 
             // lblNomPrenom
@@ -44,31 +45,45 @@
             // 
             // cmbNomPrenom
             // 
+            this.cmbNomPrenom.ForeColor = System.Drawing.SystemColors.MenuText;
             this.cmbNomPrenom.FormattingEnabled = true;
             this.cmbNomPrenom.Location = new System.Drawing.Point(34, 40);
             this.cmbNomPrenom.Name = "cmbNomPrenom";
             this.cmbNomPrenom.Size = new System.Drawing.Size(121, 21);
             this.cmbNomPrenom.TabIndex = 1;
+            this.cmbNomPrenom.SelectedIndexChanged += new System.EventHandler(this.cmbNomPrenom_SelectedIndexChanged);
             // 
-            // listView1
+            // lvReservation
             // 
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(183, 24);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(591, 150);
-            this.listView1.TabIndex = 2;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.lvReservation.HideSelection = false;
+            this.lvReservation.Location = new System.Drawing.Point(183, 24);
+            this.lvReservation.Name = "lvReservation";
+            this.lvReservation.Size = new System.Drawing.Size(591, 150);
+            this.lvReservation.TabIndex = 2;
+            this.lvReservation.UseCompatibleStateImageBehavior = false;
+            this.lvReservation.SelectedIndexChanged += new System.EventHandler(this.lvReservation_SelectedIndexChanged);
             // 
-            // ReservationPourClient
+            // gbxDetailsReservation
+            // 
+            this.gbxDetailsReservation.Location = new System.Drawing.Point(34, 180);
+            this.gbxDetailsReservation.Name = "gbxDetailsReservation";
+            this.gbxDetailsReservation.Size = new System.Drawing.Size(740, 226);
+            this.gbxDetailsReservation.TabIndex = 3;
+            this.gbxDetailsReservation.TabStop = false;
+            this.gbxDetailsReservation.Text = "Réservation";
+            // 
+            // FormReservationPourClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.listView1);
+            this.ClientSize = new System.Drawing.Size(800, 418);
+            this.Controls.Add(this.gbxDetailsReservation);
+            this.Controls.Add(this.lvReservation);
             this.Controls.Add(this.cmbNomPrenom);
             this.Controls.Add(this.lblNomPrenom);
-            this.Name = "ReservationPourClient";
-            this.Text = "ReservationPourClient";
+            this.Name = "FormReservationPourClient";
+            this.Text = "Atlantik - Afficher les détails d\'une réservation pour un client";
+            this.Load += new System.EventHandler(this.ReservationPourClient_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -78,6 +93,7 @@
 
         private System.Windows.Forms.Label lblNomPrenom;
         private System.Windows.Forms.ComboBox cmbNomPrenom;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView lvReservation;
+        private System.Windows.Forms.GroupBox gbxDetailsReservation;
     }
 }

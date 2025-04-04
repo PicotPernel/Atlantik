@@ -17,7 +17,7 @@ namespace Atlantik
         {
             InitializeComponent();
         }
-        public int GetQuantitéEnregistrée(int noTraversee, string lettreCategorie)
+        private static int GetQuantitéEnregistrée(int noTraversee, string lettreCategorie)
         {
             MySqlConnection maCnx;
             maCnx = new MySqlConnection("server=localhost;user=root;database=atlantik;port=3306;password=");
@@ -49,7 +49,7 @@ namespace Atlantik
                 }
             }
         }
-        public int GetCapaciteMax(int noTraversee, String lettreCategorie)
+        private static int GetCapaciteMax(int noTraversee, String lettreCategorie)
         {
             MySqlConnection maCnx;
             maCnx = new MySqlConnection("server=localhost;user=root;database=atlantik;port=3306;password=");
@@ -80,7 +80,7 @@ namespace Atlantik
                 }
             }
         }
-        public List<Categorie> GetLesCategories()
+        private static List<Categorie> GetLesCategories()
         {
             List<Categorie> categories = new List<Categorie>();
             MySqlConnection maCnx;
@@ -116,7 +116,7 @@ namespace Atlantik
                 }
             }
         }
-        public List<Traversee> GetLesTraverseesBateaux(int noLiaison, DateTime dateTraversee)
+        private static List<Traversee> GetLesTraverseesBateaux(int noLiaison, DateTime dateTraversee)
         {
             List<Traversee> traversees = new List<Traversee>();
             MySqlConnection maCnx;

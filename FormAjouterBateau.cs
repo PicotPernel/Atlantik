@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
@@ -63,56 +64,65 @@ namespace Atlantik
         }
         private void btnAjouter_Click(object sender, EventArgs e)
         {
-            long dernierNoBateau = 0;
-            MySqlConnection maCnx;
-            maCnx = new MySqlConnection("server=localhost;user=root;database=atlantik;port=3306;password=");
-            try
+            var objetRegEx = new Regex("^[a-zA-Zéèêëçàâôù ûïî]{1,}.*$");
+            var résultatTest = objetRegEx.Match(tbxNomBateau.Text);
+            if (!résultatTest.Success ^ tbxNomBateau.Text is null)
             {
-                string requête;
-                maCnx.Open();
-                requête = "INSERT INTO bateau (NOM) " +
+                tbxNomBateau.BackColor = Color.Red;
+            }
+            else
+            {
+                long dernierNoBateau = 0;
+                MySqlConnection maCnx;
+                maCnx = new MySqlConnection("server=localhost;user=root;database=atlantik;port=3306;password=");
+                try
+                {
+                    string requête;
+                    maCnx.Open();
+                    requête = "INSERT INTO bateau (NOM) " +
                     "VALUES (@nomBateau)";
-                var maCde = new MySqlCommand(requête, maCnx);
-                maCde.Parameters.AddWithValue("@nomBateau", tbxNomBateau.Text);
-                MessageBox.Show("Lignes affectées : " + maCde.ExecuteNonQuery());
-                dernierNoBateau = maCde.LastInsertedId;
-            }
-            catch (MySqlException exception)
-            {
-                MessageBox.Show("Erreur " + exception.ToString());
-            }
-            finally
-            {
-                if (maCnx is object & maCnx.State == ConnectionState.Open)
-                {
-                    maCnx.Close();
+                    var maCde = new MySqlCommand(requête, maCnx);
+                    maCde.Parameters.AddWithValue("@nomBateau", tbxNomBateau.Text);
+                    MessageBox.Show("Lignes affectées : " + maCde.ExecuteNonQuery());
+                    dernierNoBateau = maCde.LastInsertedId;
                 }
-            }
-            foreach (Control element in gbxCapaciteMax.Controls)
-            {
-                if (element is TextBox)
+                catch (MySqlException exception)
                 {
-                    try
+                    MessageBox.Show("Erreur " + exception.ToString());
+                }
+                finally
+                {
+                    if (maCnx is object & maCnx.State == ConnectionState.Open)
                     {
-                        string requête;
-                        maCnx.Open();
-                        requête = "INSERT INTO contenir (LETTRECATEGORIE, NOBATEAU, CAPACITEMAX) " +
-                            "VALUES (@lettreCategorie, @noBateau, @capaciteMax)";
-                        var maCde = new MySqlCommand(requête, maCnx);
-                        maCde.Parameters.AddWithValue("@lettreCategorie", element.Tag);
-                        maCde.Parameters.AddWithValue("@noBateau", dernierNoBateau);
-                        maCde.Parameters.AddWithValue("@capaciteMax", element.Text);
-                        maCde.ExecuteNonQuery();
+                        maCnx.Close();
                     }
-                    catch (MySqlException exception)
+                }
+                foreach (Control element in gbxCapaciteMax.Controls)
+                {
+                    if (element is TextBox)
                     {
-                        MessageBox.Show("Erreur " + exception.ToString());
-                    }
-                    finally
-                    {
-                        if (maCnx is object & maCnx.State == ConnectionState.Open)
+                        try
                         {
-                            maCnx.Close();
+                            string requête;
+                            maCnx.Open();
+                            requête = "INSERT INTO contenir (LETTRECATEGORIE, NOBATEAU, CAPACITEMAX) " +
+                            "VALUES (@lettreCategorie, @noBateau, @capaciteMax)";
+                            var maCde = new MySqlCommand(requête, maCnx);
+                            maCde.Parameters.AddWithValue("@lettreCategorie", element.Tag);
+                            maCde.Parameters.AddWithValue("@noBateau", dernierNoBateau);
+                            maCde.Parameters.AddWithValue("@capaciteMax", element.Text);
+                            maCde.ExecuteNonQuery();
+                        }
+                        catch (MySqlException exception)
+                        {
+                            MessageBox.Show("Erreur " + exception.ToString());
+                        }
+                        finally
+                        {
+                            if (maCnx is object & maCnx.State == ConnectionState.Open)
+                            {
+                                maCnx.Close();
+                            }
                         }
                     }
                 }

@@ -11,10 +11,10 @@ namespace Atlantik
         private string nomPortDepart;
         private string nomPortArrivee;
         private int noLiaison;
-        public Liaison(string nouvNoDepart, string nouvNoArrivee, int nouvNoLiaison)
+        public Liaison(string nouvNomDepart, string nouvNomArrivee, int nouvNoLiaison)
         {
-            this.nomPortDepart = nouvNoDepart;
-            this.nomPortArrivee = nouvNoArrivee;
+            this.nomPortDepart = nouvNomDepart;
+            this.nomPortArrivee = nouvNomArrivee;
             this.noLiaison = nouvNoLiaison;
         }
         public int GetNoLiaison()

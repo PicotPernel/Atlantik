@@ -130,7 +130,7 @@ namespace Atlantik
                 maCnx.Open();
                 requête = "SELECT noLiaison, PortDepart.nom as 'Port départ', PortArrive.nom as 'Port arrivée' " +
                     "FROM LIAISON " +
-                    "INNER JOIN port as PortDepart on (PortDepart.noport = noport_depart) " +
+                    "INNER JOIN port as PortDepart ON (PortDepart.noport = noport_depart) " +
                     "INNER JOIN port as PortArrive ON (PortArrive.noport = noport_arrivee) " +
                     "WHERE NOSECTEUR = @noSecteur";
                 var maCde = new MySqlCommand(requête, maCnx);

@@ -59,5 +59,11 @@ namespace Atlantik
             FormAfficherTraverseePourLiaisonEtDate lesTraverseePourUneDate = new FormAfficherTraverseePourLiaisonEtDate();
             lesTraverseePourUneDate.Show();
         }
+
+        private void miDetailsReservationsAfficher_Click(object sender, EventArgs e)
+        {
+            FormReservationPourClient formReservationPourClient = new FormReservationPourClient();
+            formReservationPourClient.Show();
+        }
     }
 }

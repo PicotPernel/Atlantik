@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
@@ -88,33 +89,42 @@ namespace Atlantik
         {
             MySqlConnection maCnx;
             maCnx = new MySqlConnection("server=localhost;user=root;database=atlantik;port=3306;password=");
-            try
+            var objetRegEx = new Regex("^[0-9]{1,}.*$");
+            var résultatTest = objetRegEx.Match(tbxDistance.Text);
+            if (!résultatTest.Success)
             {
-                string requête;
-                maCnx.Open();
-                requête = "INSERT INTO liaison (NOPORT_DEPART, NOSECTEUR, NOPORT_ARRIVEE, DISTANCE) " +
-                    "VALUES (@noDepart, @noSecteur, @noArrivee, @distance)";
-                var maCde = new MySqlCommand(requête, maCnx);
-                maCde.Parameters.AddWithValue("@noDepart", (((Port)cmbDepart.SelectedItem).GetNoPort()));
-                maCde.Parameters.AddWithValue("@noArrivee", (((Port)cmbArrivee.SelectedItem).GetNoPort()));
-                maCde.Parameters.AddWithValue("@noSecteur", (((Secteur)lbxSecteurs.SelectedItem).GetNoSecteur()));
-                maCde.Parameters.AddWithValue("@distance", double.Parse(tbxDistance.Text));
-                maCde.ExecuteNonQuery();
-                MessageBox.Show("Ajout effectué");
-                cmbDepart.SelectedItem = null;
-                cmbArrivee.SelectedItem = null;
-                lbxSecteurs.SelectedItem = null;
-                tbxDistance.Text = null;
+                tbxDistance.BackColor = Color.Red;
             }
-            catch (MySqlException exception)
-            {
-                MessageBox.Show("Erreur " + exception.ToString());
-            }
-            finally
-            {
-                if (maCnx is object & maCnx.State == ConnectionState.Open)
+            else
+            { 
+                try
                 {
-                    maCnx.Close();
+                    string requête;
+                    maCnx.Open();
+                    requête = "INSERT INTO liaison (NOPORT_DEPART, NOSECTEUR, NOPORT_ARRIVEE, DISTANCE) " +
+                        "VALUES (@noDepart, @noSecteur, @noArrivee, @distance)";
+                    var maCde = new MySqlCommand(requête, maCnx);
+                    maCde.Parameters.AddWithValue("@noDepart", (((Port)cmbDepart.SelectedItem).GetNoPort()));
+                    maCde.Parameters.AddWithValue("@noArrivee", (((Port)cmbArrivee.SelectedItem).GetNoPort()));
+                    maCde.Parameters.AddWithValue("@noSecteur", (((Secteur)lbxSecteurs.SelectedItem).GetNoSecteur()));
+                    maCde.Parameters.AddWithValue("@distance", double.Parse(tbxDistance.Text));
+                    maCde.ExecuteNonQuery();
+                    MessageBox.Show("Ajout effectué");
+                    cmbDepart.SelectedItem = null;
+                    cmbArrivee.SelectedItem = null;
+                    lbxSecteurs.SelectedItem = null;
+                    tbxDistance.Text = null;
+                }
+                catch (MySqlException exception)
+                {
+                    MessageBox.Show("Erreur " + exception.ToString());
+                }
+                finally
+                {
+                    if (maCnx is object & maCnx.State == ConnectionState.Open)
+                    {
+                        maCnx.Close();
+                    }
                 }
             }
         }

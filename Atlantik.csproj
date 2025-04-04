@@ -110,6 +110,7 @@
     </Compile>
     <Compile Include="Bateau.cs" />
     <Compile Include="Categorie.cs" />
+    <Compile Include="Client.cs" />
     <Compile Include="FormAfficherTraverseePourLiaisonEtDate.cs">
       <SubType>Form</SubType>
     </Compile>

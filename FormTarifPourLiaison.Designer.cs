@@ -49,9 +49,9 @@
             // 
             // btnAjouter
             // 
-            this.btnAjouter.Location = new System.Drawing.Point(213, 712);
+            this.btnAjouter.Location = new System.Drawing.Point(38, 712);
             this.btnAjouter.Name = "btnAjouter";
-            this.btnAjouter.Size = new System.Drawing.Size(387, 23);
+            this.btnAjouter.Size = new System.Drawing.Size(752, 23);
             this.btnAjouter.TabIndex = 1;
             this.btnAjouter.Text = "Ajouter";
             this.btnAjouter.UseVisualStyleBackColor = true;
@@ -113,7 +113,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(827, 821);
+            this.ClientSize = new System.Drawing.Size(827, 758);
             this.Controls.Add(this.lblSecteurs);
             this.Controls.Add(this.lbxSecteurs);
             this.Controls.Add(this.cmbPeriodes);
